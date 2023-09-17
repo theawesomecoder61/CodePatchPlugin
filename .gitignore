@@ -1,11 +1,15 @@
 # Prerequisites
 *.d
+*.lst
+*.map
 
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
+*.elf
+*.wps
 
 # Precompiled Headers
 *.gch
