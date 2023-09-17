@@ -75,3 +75,6 @@ Building via `make` only logs errors (via OSReport). To enable logging via the [
 `make DEBUG=VERBOSE` Enables verbose information and error logging via [LoggingModule](https://github.com/wiiu-env/LoggingModule).
 
 If the [LoggingModule](https://github.com/wiiu-env/LoggingModule) is not present, it will fallback to UDP (port 4405) and [CafeOS](https://github.com/wiiu-env/USBSerialLoggingModule) logging. You can use `udplogserver` (/opt/devkitpro/tools/bin/udplogserver) to view logs.
+
+## Credits
+- [AboodXD](https://github.com/aboood40091): [CafeLoader](https://github.com/aboood40091/CafeLoader)
