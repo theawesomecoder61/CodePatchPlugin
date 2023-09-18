@@ -18,7 +18,7 @@
 
 WUPS_PLUGIN_NAME("Code Patch Plugin");
 WUPS_PLUGIN_DESCRIPTION("This plugin dynamically patches executables with user-specified patches.");
-WUPS_PLUGIN_VERSION("v1.0");
+WUPS_PLUGIN_VERSION("v1.1");
 WUPS_PLUGIN_AUTHOR("pineapples721");
 WUPS_PLUGIN_LICENSE("GPL");
 

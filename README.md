@@ -14,7 +14,7 @@ Code Patch will load all `.hax` files in a folder and apply all patches found th
 ---
 
 ## Installation
-Be sure you fully installed and configured Tiramisu and Aroma on your Wii U.
+Be sure you fully installed and configured Tiramisu and Aroma on your Wii U. You should have NotificationModule and KernelModule in `/fs/vol/external01/wiiu/environments/aroma/modules`.
 
 1. Copy `CodePatchPlugin.wps` into `/fs/vol/external01/wiiu/environments/aroma/plugins`.
 2. Create a folder in `/fs/vol/external01/wiiu/` called `codepatches`.
@@ -26,10 +26,10 @@ Patching can be enabled/disabled globally via the WUPS config menu (press L, DPA
 
 When loading and applying patches, the plugin will display messages in the top left. These too can be enabled/disabled in the WUPS config menu.
 
-I tested on a 32 GB US model running 5.5.5. This plugin will work on all 5.5.X versions that Tiramisu supports.
+I tested the plugin on a 32 GB US model running 5.5.5. This plugin will work on all 5.5.X versions that Tiramisu supports.
 
 ## hax files
-A `.hax` file is a format that contains individual code replacements with corresponding addresses. Since the Wii U's CPU is big-endian, `.hax` files must also be. I did not invent this format; I use it since CafeLoader used it.
+A `.hax` file is a format that contains individual code replacements with corresponding addresses. Such files are big-endian. I did not invent this format; I use it since CafeLoader used it.
 
 For reference, here is a breakdown of the format.
 
@@ -61,6 +61,7 @@ To build, you need:
 - [Wii U Plugin System](https://github.com/Maschell/WiiUPluginSystem)
 - [Wii U Module System](https://github.com/wiiu-env/WiiUModuleSystem)
 - [NotificationModule](https://github.com/wiiu-env/NotificationModule)
+- [libkernel](https://github.com/wiiu-env/libkernel)
 - [wut](https://github.com/devkitpro/wut)
 
 Install them with their dependencies in this order according to their READMEs. After, compile the plugin using `make` (with no logging) or `make DEBUG=1` (with logging).
@@ -68,11 +69,11 @@ Install them with their dependencies in this order according to their READMEs. A
 ## Buildflags
 
 ### Logging
-Building via `make` only logs errors (via OSReport). To enable logging via the [LoggingModule](https://github.com/wiiu-env/LoggingModule) set `DEBUG` to `1` or `VERBOSE`.
+You can build the plugin in one of three ways:
 
-`make` Logs errors only (via OSReport).  
-`make DEBUG=1` Enables information and error logging via [LoggingModule](https://github.com/wiiu-env/LoggingModule).  
-`make DEBUG=VERBOSE` Enables verbose information and error logging via [LoggingModule](https://github.com/wiiu-env/LoggingModule).
+- `make` Logs errors only (via OSReport).  
+- `make DEBUG=1` Enables information and error logging via [LoggingModule](https://github.com/wiiu-env/LoggingModule).  
+- `make DEBUG=VERBOSE` Enables verbose information and error logging via [LoggingModule](https://github.com/wiiu-env/LoggingModule).
 
 If the [LoggingModule](https://github.com/wiiu-env/LoggingModule) is not present, it will fallback to UDP (port 4405) and [CafeOS](https://github.com/wiiu-env/USBSerialLoggingModule) logging. You can use `udplogserver` (/opt/devkitpro/tools/bin/udplogserver) to view logs.
 
