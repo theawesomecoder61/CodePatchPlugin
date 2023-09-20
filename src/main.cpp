@@ -18,12 +18,12 @@
 
 WUPS_PLUGIN_NAME("Code Patch Plugin");
 WUPS_PLUGIN_DESCRIPTION("This plugin dynamically patches executables with user-specified patches.");
-WUPS_PLUGIN_VERSION("v1.1");
+WUPS_PLUGIN_VERSION("v1.2");
 WUPS_PLUGIN_AUTHOR("pineapples721");
 WUPS_PLUGIN_LICENSE("GPL");
 
 #define ENABLED_CONFIG_ID "enabled"
-#define NOTIFICATIONS_CONFIG_ID "logging"
+#define NOTIFICATIONS_CONFIG_ID "notifications"
 #define CODE_PATCH_PATH "fs:/vol/external01/wiiu/codepatches/"
 #define FS_MAX_MOUNTPATH_SIZE 128
 
@@ -135,9 +135,9 @@ INITIALIZE_PLUGIN() {
         DEBUG_FUNCTION_LINE("Failed to open storage %s (%d)", WUPS_GetStorageStatusStr(storageRes), storageRes);
     } else {
         // Try to get values from storage
-        if ((storageRes = WUPS_GetBool(nullptr, NOTIFICATIONS_CONFIG_ID, &enabled)) == WUPS_STORAGE_ERROR_NOT_FOUND) {
+        if ((storageRes = WUPS_GetBool(nullptr, ENABLED_CONFIG_ID, &enabled)) == WUPS_STORAGE_ERROR_NOT_FOUND) {
             // Add the value to the storage if it is missing
-            if (WUPS_StoreBool(nullptr, NOTIFICATIONS_CONFIG_ID, enabled) != WUPS_STORAGE_ERROR_SUCCESS) {
+            if (WUPS_StoreBool(nullptr, ENABLED_CONFIG_ID, enabled) != WUPS_STORAGE_ERROR_SUCCESS) {
                 DEBUG_FUNCTION_LINE("Failed to store bool");
             }
         } else if (storageRes != WUPS_STORAGE_ERROR_SUCCESS) {
